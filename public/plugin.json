@@ -1,0 +1,17 @@
+{
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "KGITHUB_COM",
+      "explain": "使用镜像站[https://kgithub.com]",
+      "cmds": [
+        {
+          "type": "regex",
+          "label": "秒开GitHub",
+          "match": "/^((https:)?//)?github.com/.+$/ig"
+        }
+      ]
+    }
+  ]
+}
