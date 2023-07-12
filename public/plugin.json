@@ -1,11 +1,13 @@
 {
   "logo": "logo.png",
-  "preload": "preload.js",
+  "main": "index.html",
   "features": [
     {
-      "code": "KGITHUB_COM",
-      "explain": "使用镜像站[https://kgithub.com]",
+      "code": "QUICK_GITHUB",
+      "explain": "快速打开GitHub",
       "cmds": [
+        "GitHub",
+        "秒开",
         {
           "type": "regex",
           "label": "秒开GitHub",

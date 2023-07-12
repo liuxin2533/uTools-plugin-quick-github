@@ -1,30 +1,32 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <n-message-provider>
+    <mirror-list/>
+  </n-message-provider>
 </template>
+<script setup>
+import {NMessageProvider} from 'naive-ui'
+import MirrorList from './components/MirrorList.vue'
+import {getUsingMirror} from './api/mirror.js'
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+const GITHUB_URL = 'github.com'
+
+function matchQuickUrl (payload) {
+  const using = getUsingMirror()
+  return payload.replace(GITHUB_URL, using.key)
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+window.utools.onPluginEnter(({code, type, payload}) => {
+  if (type === 'regex') {
+    const url = matchQuickUrl(payload)
+    window.utools.shellOpenExternal(url)
+    window.utools.hideMainWindow()
+    window.utools.outPlugin()
+  }
+})
+</script>
+<style>
+#app {
+  width: 100%;
+  height: 100%;
 }
 </style>
