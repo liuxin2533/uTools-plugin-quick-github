@@ -15,3 +15,6 @@
 > 目前支持的镜像站
 >
 > 1. https://kgithub.com
+> 2. https://hub.njuu.cf
+> 3. https://hub.nuaa.cf
+> 4. https://hub.yzuu.cf

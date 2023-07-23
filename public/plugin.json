@@ -1,6 +1,9 @@
 {
   "logo": "logo.png",
   "main": "index.html",
+  "development": {
+    "main": "http://localhost:5173/"
+  },
   "features": [
     {
       "code": "QUICK_GITHUB",
