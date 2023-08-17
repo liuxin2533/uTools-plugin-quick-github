@@ -1,18 +1,21 @@
 <template>
   <n-message-provider>
-    <mirror-list/>
+    <Tip/>
+    <MirrorList/>
   </n-message-provider>
 </template>
 <script setup>
 import {NMessageProvider} from 'naive-ui'
 import MirrorList from './components/MirrorList.vue'
-import {getUsingMirror} from './api/mirror.js'
+import Tip from './components/Tip.vue'
+import {useMirrorsStore} from '@/store/mirrors.js'
 
 const GITHUB_URL = 'github.com'
 
+const mirrorStore = useMirrorsStore()
+
 function matchQuickUrl (payload) {
-  const using = getUsingMirror()
-  return payload.replace(GITHUB_URL, using.key)
+  return payload.replace(GITHUB_URL, mirrorStore.usingMirror.key)
 }
 
 window.utools.onPluginEnter(({code, type, payload}) => {

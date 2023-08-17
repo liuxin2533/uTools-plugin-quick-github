@@ -1,6 +1,10 @@
 import {createApp} from 'vue'
+import {createPinia} from 'pinia'
 import App from './App.vue'
-import {init as initMirrors} from './utools/db/mirror.js'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 // import {
 //   create,
 //   NButton,
@@ -10,7 +14,7 @@ import {init as initMirrors} from './utools/db/mirror.js'
 // const naive = create({
 //   components: [NButton, NDataTable]
 // })
-initMirrors()
 const app = createApp(App)
+app.use(pinia)
 // app.use(naive)
 app.mount('#app')
